@@ -1,0 +1,48 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.fa-circle-user,
+.fa-arrow-right-from-bracket {
+  margin: 0 5px;
+}
+
+header a.router-link-exact-active {
+  color: #42b983;
+}
+
+.main-nav-item {
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.main-nav-item:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  max-width: 100%;
+  width: 200px;
+}
+
+.hidden-signout {
+  display: none;
+}
