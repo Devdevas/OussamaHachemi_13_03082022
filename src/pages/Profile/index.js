@@ -11,17 +11,19 @@ function Profile() {
     const token = useSelector(selectToken)
     const firstName = useSelector(selectfirstName)
     const lastName = useSelector(selectlastName)
-    const [newFirstName, setNewFirstName] = useState('')
-    const [newLastName, setNewLastName] = useState('')
+    const [newFirstName, setNewFirstName] = useState(firstName)
+    const [newLastName, setNewLastName] = useState(lastName)
     const [isVisible, setIsVisible] = useState(false)
     const [inputError, setInputError] = useState(false)
     const dispatch = useDispatch()
 
     function toggleEditForm() {
+        if (!isVisible) {
+            setNewFirstName("")
+            setNewLastName("")
+        }
         setIsVisible(!isVisible)
         setInputError(false)
-        setNewFirstName("")
-        setNewLastName("")
     }
 
     function updateProfileName() {
@@ -29,14 +31,10 @@ function Profile() {
             setInputError(true)
             return
         }
+        const updatedFirstName = newFirstName || firstName;
+        const updatedLastName = newLastName || lastName;
+        dispatch(updateProfile(updatedFirstName, updatedLastName, token));
         toggleEditForm()
-        if (!newFirstName && newLastName) {
-            dispatch(updateProfile(firstName, newLastName, token))
-        } else if (newFirstName && !newLastName) {
-            dispatch(updateProfile(newFirstName, lastName, token))
-        } else {
-            dispatch(updateProfile(newFirstName, newLastName, token))
-        }
     }
 
     dispatch(getProfile(token))
