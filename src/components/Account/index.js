@@ -1,10 +1,10 @@
 import './style.css'
 
-function Acount({ tilte, amount, description }) {
+function Account({ title, amount, description }) {
     return (
         <section className="account">
             <div className="account-content-wrapper">
-                <h3 className="account-title">{tilte}</h3>
+                <h3 className="account-title">{title}</h3>
                 <p className="account-amount">{amount}</p>
                 <p className="account-amount-description">{description}</p>
             </div>
@@ -15,4 +15,4 @@ function Acount({ tilte, amount, description }) {
     )
 }
 
-export default Acount
+export default Account

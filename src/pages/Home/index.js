@@ -6,21 +6,15 @@ import securityIcon from '../../assets/icon-security.png'
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import './style.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectfirstName, selectToken } from '../../utils/selectors';
-import { getProfile } from '../../features/userAuth';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../utils/selectors';
 
 function Home() {
   const token = useSelector(selectToken)
-  const firstName = useSelector(selectfirstName)
-  const dispatch = useDispatch()
-  if (token) {
-    dispatch(getProfile(token))
-  }
 
   return (
     <div>
-      {token ? <Header navText={`${firstName}`} /> : <Header navText={`${firstName}`} className="hidden-signout" />}
+      {token ? <Header /> : <Header className="hidden-signout" />}
       <main>
         <Banner />
         <section className="features">

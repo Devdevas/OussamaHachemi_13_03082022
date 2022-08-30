@@ -46,3 +46,13 @@ header a.router-link-exact-active {
 .hidden-signout {
   display: none;
 }
+
+.signout-text {
+  display: inline;
+}
+
+@media screen and (max-width: 414px) {
+  .signout-text {
+    display: none;
+  }
+}

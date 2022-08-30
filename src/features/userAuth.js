@@ -50,7 +50,7 @@ export function updateProfile(firstName, lastName, token) {
                     lastName: lastName
                 }
             });
-            dispatch(updateName(firstName, lastName, response.data.body))
+            dispatch(updateName(response.data.body))
         } catch (error) {
             console.error(error);
         }
@@ -82,8 +82,8 @@ const userSlice = createSlice({
             }
         },
         updateName: {
-            prepare: (firstName, lastName, data) => ({
-                payload: { firstName, lastName, data }
+            prepare: (data) => ({
+                payload: { data }
             }),
             reducer: (draft, action) => {
                 draft.data = action.payload.data;
